@@ -1,0 +1,423 @@
+.case-room-app {
+  min-height: 100vh;
+  padding-bottom: 74px;
+}
+
+h1,
+h2,
+h3,
+button,
+strong {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  transform: translateY(-140%);
+  border-radius: 8px;
+  background: var(--ink);
+  color: white;
+  padding: 10px 14px;
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 76px;
+  padding: 12px clamp(18px, 4vw, 64px);
+  border-bottom: 1px solid rgba(217, 222, 234, 0.9);
+  background: rgba(247, 248, 251, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.brand-lockup,
+.header-actions,
+.brand-lockup > div {
+  display: flex;
+  align-items: center;
+}
+
+.brand-lockup {
+  gap: 12px;
+}
+
+.brand-lockup > div {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-mark,
+.institution-mark,
+.action-mark {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.brand-name {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.brand-lockup p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.header-actions {
+  gap: 8px;
+}
+
+.text-button,
+.icon-button {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.text-button {
+  padding: 0 14px;
+}
+
+.icon-button {
+  width: 48px;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.main-shell {
+  width: min(1120px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.start-screen {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: clamp(42px, 7vw, 96px);
+  align-items: center;
+  min-height: calc(100vh - 150px);
+  padding: 64px 0;
+}
+
+.fictional-label,
+.completion-label,
+.section-heading > p,
+.case-intro > p,
+.case-kicker-row > p,
+.action-heading p,
+.state-copy > p {
+  margin: 0 0 14px;
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+}
+
+.start-copy h1,
+.section-heading h1,
+.case-intro h1,
+.case-board > h1,
+.summary-screen > h1,
+.session-summary > h1 {
+  margin: 0;
+  max-width: 820px;
+  font-size: clamp(34px, 5.4vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.start-copy h1 {
+  max-width: 720px;
+  font-size: clamp(34px, 4.8vw, 62px);
+}
+
+.start-lead,
+.case-description,
+.summary-lead {
+  max-width: 720px;
+  margin: 28px 0;
+  color: var(--muted);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.72;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 52px;
+  border-radius: 12px;
+  padding: 0 22px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 850;
+}
+
+.primary-button {
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: white;
+}
+
+.secondary-button {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.primary-button:not(:disabled):hover,
+.secondary-button:hover,
+.text-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(23, 35, 60, 0.1);
+}
+
+.button-row,
+.board-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.term-help {
+  max-width: 880px;
+  margin: 20px 0 28px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.term-help.compact {
+  max-width: none;
+  margin: 12px 0 16px;
+}
+
+.term-help summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--teal);
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.term-help summary::after {
+  margin-left: auto;
+  content: "+ 쉬운 풀이";
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.term-help[open] summary::after {
+  content: "− 닫기";
+}
+
+.term-help-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 22px;
+  margin: 0;
+  padding: 0 0 18px;
+}
+
+.term-help-list > div {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+
+.term-help-list dt {
+  color: var(--ink);
+  font-weight: 850;
+}
+
+.term-help-list dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.privacy-note {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.process-preview {
+  margin: 0;
+  padding: 20px 0;
+  list-style: none;
+  border-top: 2px solid var(--ink);
+}
+
+.process-preview li {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 14px;
+  padding: 22px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.process-preview li > span {
+  color: var(--teal);
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 800;
+}
+
+.process-preview strong,
+.process-preview p {
+  display: block;
+  margin: 0;
+}
+
+.process-preview p {
+  margin-top: 6px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.primer-screen,
+.case-intro,
+.summary-screen,
+.constitutional-note,
+.reasoning-screen,
+.session-summary {
+  padding: clamp(54px, 8vw, 94px) 0;
+}
+
+.section-heading {
+  margin-bottom: 34px;
+}
+
+.primer-card {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 24px;
+  max-width: 880px;
+  margin-bottom: 26px;
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding: 34px 10px;
+}
+
+.primer-card h2,
+.state-copy h2,
+.action-heading h2,
+.learning-focus strong,
+.transition-preview strong {
+  margin: 0;
+}
+
+.primer-card h2 {
+  font-size: 29px;
+}
+
+.role-sentence {
+  margin: 12px 0 26px;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.role-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0;
+}
+
+.role-details div {
+  border-left: 3px solid var(--line);
+  padding: 2px 14px;
+}
+
+.role-details dt {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.role-details dd {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.institution-executive .institution-mark,
+.institution-executive .action-mark {
+  background: var(--teal);
+}
+
+.institution-court .institution-mark,
+.institution-court .action-mark {
+  background: var(--plum);
+}
+
+.case-intro {
+  max-width: 880px;
+}
+
+.learning-focus,
+.fictional-notice,
+.no-score-note,
+.boundary-note {
+  margin: 28px 0;
+  border-left: 4px solid var(--teal);
+  background: #edf8f7;
+  padding: 20px 22px;
+  line-height: 1.65;
+}
+
+.learning-focus p,
+.fictional-notice p,
+.no-score-note p {
+  margin: 7px 0 0;
+}
+
+.fictional-notice {
+  display: flex;
+  gap: 12px;
+  border-color: var(--amber);
+  background: #fff6e8;
+}
+
+.fictional-notice span {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: white;
+  font-weight: 900;
+}

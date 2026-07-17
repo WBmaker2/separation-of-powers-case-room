@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #17233c;
+  --muted: #5f6a7d;
+  --paper: #f7f8fb;
+  --surface: #ffffff;
+  --line: #d9deea;
+  --navy: #223a67;
+  --teal: #087f7a;
+  --plum: #7c3c73;
+  --amber: #c97815;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+button,
+a,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #2f70d9;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #cde8e7;
+  color: var(--ink);
+}
