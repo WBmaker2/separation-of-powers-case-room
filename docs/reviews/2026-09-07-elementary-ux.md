@@ -19,6 +19,6 @@
 
 기관 역할과 법률적 상태 전이, 정답 위치 4/4/4, 밝은 테마, 개인정보 미수집과 비경쟁 학습 계약을 유지했습니다. 새 의존성·새 이미지·새 시뮬레이션·음성 기능을 추가하지 않았습니다.
 
-커밋·푸시·배포는 수행하지 않았습니다. [현재 공개판](https://wbmaker2.github.io/separation-of-powers-case-room/)에는 이번 수정이 아직 반영되지 않았습니다. [로컬 개선판](http://127.0.0.1:64173/separation-of-powers-case-room/)은 미리보기 서버가 실행 중인 이 컴퓨터에서 확인할 수 있습니다.
+이 기록은 공개 릴리스 전의 UX 점검 기록입니다. 이후 UX 소스는 커밋 `bcda6b2`로 반영했고, [GitHub Actions 34122496332](https://github.com/WBmaker2/separation-of-powers-case-room/actions/runs/34122496332)가 성공했습니다. [현재 공개판](https://wbmaker2.github.io/separation-of-powers-case-room/)에 배포되었으며, 공개 320px 키보드 전체 경로(26개 상태)는 가로 넘침 0·실행 오류 0으로 확인했습니다. [로컬 개선판](http://127.0.0.1:64173/separation-of-powers-case-room/)은 당시 선택적으로 사용한 로컬 미리보기였습니다.
 
 상세 계획, 감사 장부, 문구 전후 비교, 점수/미실행 범위는 로컬 work/elementary-webapp-ux-*.md에 보존했습니다. 실제 학생·교사 수업 검수 및 공개 릴리스는 별도 단계입니다.
