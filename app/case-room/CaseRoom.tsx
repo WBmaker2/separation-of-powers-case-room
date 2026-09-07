@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AppHeader } from "./AppHeader.tsx";
 import { CaseBoard } from "./CaseBoard.tsx";
 import { CaseGlossary } from "./CaseGlossary.tsx";
@@ -51,12 +51,29 @@ export function CaseRoom() {
   const [feedback, setFeedback] = useState("");
   const [reasonIds, setReasonIds] = useState<string[]>([]);
   const [dialog, setDialog] = useState<"sources" | "changelog" | null>(null);
+  const previousStageRef = useRef<string | null>(null);
 
   const civicCase = caseBank[caseIndex];
   const progress = progresses[caseIndex];
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
+  }, [phase, caseIndex, primerIndex, progress.currentStateId]);
+
+  useEffect(() => {
+    const stageKey = `${phase}:${caseIndex}:${primerIndex}:${progress.currentStateId}`;
+    if (previousStageRef.current === null) {
+      previousStageRef.current = stageKey;
+      return;
+    }
+    if (previousStageRef.current === stageKey) return;
+    previousStageRef.current = stageKey;
+    const heading = phase === "case-board"
+      ? document.getElementById("current-state-title")
+      : document.querySelector<HTMLElement>("main h1");
+    if (!heading) return;
+    heading.tabIndex = -1;
+    heading.focus();
   }, [phase, caseIndex, primerIndex, progress.currentStateId]);
 
   const phaseLabel = useMemo(() => {
@@ -102,7 +119,7 @@ export function CaseRoom() {
       setFeedback(
         transition.prediction
           ? "좋아요. 아래에서 이 행동의 결과를 하나 예상해 보세요."
-          : "좋아요. 이 행동이 할 수 있는 일과 한계를 확인했어요.",
+          : "좋아요. 아래에서 이 행동의 결과와 주의할 점을 읽어 보세요.",
       );
       return;
     }

@@ -66,6 +66,11 @@ test("학생 안전 범위와 구조 규칙을 지킨다", async () => {
   assert.match(caseBoard, /choice-feedback/);
   assert.match(caseBoard, /aria-describedby=\{attempted/);
   assert.match(caseBoard, /scrollIntoView/);
+  assert.match(caseBoard, /두 가지 중 하나를 골라 보세요/);
+  assert.match(caseBoard, /이 행동 뒤 달라지는 점/);
+  assert.match(caseRoom, /previousStageRef/);
+  assert.match(caseRoom, /tabIndex = -1/);
+  assert.match(content, /term: "효력"/);
   assert.match(summaryScreens, /reason-progress/);
   assert.match(summaryScreens, /세 가지 모두 맞는 설명이에요/);
   assert.match(content, /date: "2026\. 7\. 18\."/);

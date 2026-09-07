@@ -35,6 +35,12 @@ export const institutionCopy: Record<
 
 export const changelog = [
   {
+    date: "2026. 9. 7.",
+    title: "단계 안내와 법률 용어 풀이 개선",
+    detail:
+      "단계가 바뀔 때 현재 내용을 바로 읽도록 돕고, 선택 결과를 발견하기 쉽게 했습니다. 참여자와 기관을 구분하는 안내, 핵심 법률 용어 풀이, 자기 말로 정리하는 질문을 추가했습니다.",
+  },
+  {
     date: "2026. 7. 18.",
     title: "초등학생 실사용 안내 개선",
     detail:
@@ -71,6 +77,7 @@ export const caseGlossaries: Record<
   readonly { term: string; meaning: string }[]
 > = {
   "fictional-safety-sign-bill-reconsideration": [
+    { term: "효력", meaning: "법률이나 결정이 실제로 영향을 미치는 힘이에요." },
     { term: "심의·의결", meaning: "내용을 살펴보고 토의한 뒤 결정하는 일이에요." },
     { term: "이송", meaning: "다음 절차를 맡을 곳으로 문서를 보내는 일이에요." },
     { term: "공포", meaning: "법이 만들어졌다는 사실을 공식으로 알리는 일이에요." },
@@ -83,6 +90,10 @@ export const caseGlossaries: Record<
   ],
   "fictional-mobile-library-administrative-disposition": [
     { term: "행정처분", meaning: "행정기관이 신청에 대해 내리는 공식 결정이에요." },
+    { term: "거부처분", meaning: "신청한 일을 받아들이지 않겠다는 행정기관의 공식 결정이에요." },
+    { term: "소장", meaning: "어떤 다툼을 재판해 달라고 법원에 내는 문서예요." },
+    { term: "행정소송", meaning: "행정기관의 결정이 법에 맞는지 법원에 판단해 달라고 하는 재판이에요." },
+    { term: "효력", meaning: "결정이나 법률이 실제로 영향을 미치는 힘이에요." },
     { term: "위법", meaning: "법에 어긋나는 상태를 뜻해요." },
     { term: "심리", meaning: "재판에 필요한 주장과 자료를 자세히 살펴보는 일이에요." },
     { term: "판결 취지", meaning: "판결이 무엇을 뜻하고 왜 그렇게 판단했는지를 말해요." },

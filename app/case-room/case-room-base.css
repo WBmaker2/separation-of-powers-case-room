@@ -178,6 +178,14 @@ strong {
   font-weight: 850;
 }
 
+.primary-button:not(:disabled) { animation: gi-pulse 2.8s ease-in-out infinite; }
+
+.primary-button:focus-visible, .secondary-button:focus-visible, .action-card:focus-visible, .text-button:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+
+@keyframes gi-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(23,35,60,.2); } 50% { box-shadow: 0 0 0 6px rgba(23,35,60,.08); } }
+
+@media (prefers-reduced-motion: reduce) { .primary-button:not(:disabled) { animation: none; box-shadow: 0 0 0 4px rgba(23,35,60,.08); } }
+
 .primary-button {
   border: 1px solid var(--navy);
   background: var(--navy);

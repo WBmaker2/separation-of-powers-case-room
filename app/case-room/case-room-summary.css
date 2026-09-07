@@ -333,3 +333,16 @@
     transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
   }
 }
+
+.final-explanation-prompt {
+  margin: 24px 0;
+  border-left: 3px solid var(--teal);
+  background: #edf8f7;
+  padding: 14px 16px;
+}
+
+.final-explanation-prompt p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}

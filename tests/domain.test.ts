@@ -141,3 +141,18 @@ test("모든 사건에 학생용 어려운 말 풀이가 있다", () => {
     assert.ok(caseGlossaries[civicCase.id]?.length >= 3);
   }
 });
+
+test("첫 사건에도 법률의 효력을 설명하는 풀이가 있다", () => {
+  assert.ok(
+    caseGlossaries["fictional-safety-sign-bill-reconsideration"].some(
+      (item) => item.term === "효력",
+    ),
+  );
+});
+
+test("행정처분 사건의 핵심 용어를 초등학생용 풀이로 제공한다", () => {
+  const terms = caseGlossaries["fictional-mobile-library-administrative-disposition"];
+  for (const term of ["효력", "행정소송", "소장", "거부처분"]) {
+    assert.ok(terms.some((item) => item.term === term));
+  }
+});

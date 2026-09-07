@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 
 interface InfoDialogProps {
   open: boolean;
@@ -12,6 +12,8 @@ interface InfoDialogProps {
 export function InfoDialog({ open, title, onClose, children }: InfoDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const generatedId = useId();
+  const titleId = "info-dialog-title-" + generatedId;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -29,7 +31,7 @@ export function InfoDialog({ open, title, onClose, children }: InfoDialogProps) 
     <dialog
       ref={dialogRef}
       className="info-dialog"
-      aria-labelledby="info-dialog-title"
+      aria-labelledby={titleId}
       onClose={onClose}
       onCancel={(event) => {
         event.preventDefault();
@@ -41,7 +43,7 @@ export function InfoDialog({ open, title, onClose, children }: InfoDialogProps) 
     >
       <div className="dialog-panel">
         <div className="dialog-heading">
-          <h2 id="info-dialog-title">{title}</h2>
+          <h2 id={titleId}>{title}</h2>
           <button
             ref={closeButtonRef}
             className="icon-button"

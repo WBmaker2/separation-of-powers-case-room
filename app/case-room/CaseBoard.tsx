@@ -48,6 +48,18 @@ export function CaseBoard({
     });
   }, [attemptedActionId, feedback]);
 
+  useEffect(() => {
+    if (!selectedTransition) return;
+    const feedbackArea = document.querySelector<HTMLElement>(".feedback-area");
+    if (!feedbackArea) return;
+    const bounds = feedbackArea.getBoundingClientRect();
+    const headerBottom = document.querySelector<HTMLElement>(".app-header")?.getBoundingClientRect().bottom ?? 0;
+    const progressNavTop = document.querySelector<HTMLElement>(".progress-nav")?.getBoundingClientRect().top ?? window.innerHeight;
+    if (bounds.top >= headerBottom + 8 && bounds.bottom <= progressNavTop - 8) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    feedbackArea.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+  }, [selectedTransition]);
+
   const currentState = civicCase.states.find(
     (state) => state.id === progress.currentStateId,
   );
@@ -102,7 +114,7 @@ export function CaseBoard({
         </div>
         <div className="state-copy">
           <p>현재 상태</p>
-          <h2>{currentState.title}</h2>
+          <h2 id="current-state-title" tabIndex={-1}>{currentState.title}</h2>
           <p>{currentState.effect}</p>
           <div className="next-need"><strong>다음에 할 일</strong>{currentState.nextNeed}</div>
         </div>
@@ -112,7 +124,8 @@ export function CaseBoard({
         <div className="action-heading">
           <div>
             <p>{isBranch ? "가능한 두 절차" : "이번 단계의 행동"}</p>
-            <h2>{isBranch ? "어느 쪽도 점수나 실패가 아니에요." : "지금 가능한 행동을 골라 보세요."}</h2>
+            <h2>{isBranch ? "두 가지 중 하나를 골라 보세요." : "지금 가능한 행동을 골라 보세요."}</h2>
+            {isBranch && <p className="branch-subtitle">둘 다 가능한 절차예요.</p>}
           </div>
           {!isBranch && <span>누가 무엇을 하는지 함께 확인해요.</span>}
         </div>
@@ -124,7 +137,7 @@ export function CaseBoard({
             const attemptedFeedbackId = `choice-feedback-${choice.id}`;
             const isParticipant = choice.actorKind === "participant";
             const actorLabel = isParticipant
-              ? `행동 주체 · ${choice.actor}`
+              ? choice.actor
               : institution.name === choice.actor
                 ? choice.actor
                 : `${institution.name} · ${choice.actor}`;
@@ -195,11 +208,11 @@ export function CaseBoard({
       {selectedTransition && (
         <aside className="transition-preview">
           <div>
-            <p>이 기관이 할 수 있는 일</p>
+            <p>이 행동 뒤 달라지는 점</p>
             <strong>{selectedTransition.effectText}</strong>
           </div>
           <div>
-            <p>이 기관이 여기서 하지 않는 일</p>
+            <p>기억할 점</p>
             <strong>{selectedTransition.limitText}</strong>
           </div>
         </aside>

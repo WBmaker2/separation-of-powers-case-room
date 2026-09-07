@@ -68,7 +68,7 @@ export function ConstitutionalCourtNote({ onNext }: { onNext: () => void }) {
         </article>
       </div>
       <p className="boundary-note">
-        이번 앱은 법률 자체가 아니라 행정기관의 결정이 법에 맞는지를 살펴본 가상 사건이에요.
+        마지막 사건은 법률 자체가 아니라 행정기관의 결정이 법에 맞는지를 살펴본 가상 사건이에요.
       </p>
       <button className="primary-button" type="button" onClick={onNext}>
         권력 분립 이유 정리하기
@@ -153,6 +153,10 @@ export function SessionSummary({ onReset }: { onReset: () => void }) {
             <div><h2>{item.name}</h2><p>{item.role}</p><small>{item.limit}</small></div>
           </article>
         ))}
+      </div>
+      <div className="final-explanation-prompt">
+        <strong>내 말로 한 번 설명해 볼까요?</strong>
+        <p>한 기관의 역할 한 가지와, 그 기관이 하지 않는 일 한 가지를 친구에게 설명해 보세요.</p>
       </div>
       <button className="secondary-button" type="button" onClick={onReset}>
         처음부터 다시 하기
